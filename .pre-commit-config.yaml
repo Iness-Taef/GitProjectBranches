@@ -1,24 +1,23 @@
 repos:
-# General safety checks
 - repo: https://github.com/pre-commit/pre-commit-hooks
   rev: v6.0.0
   hooks:
-  - id: detect-aws-credentials # blocks embedded AWS keys
-    args: [ "--allow-missing-credentials" ] # don’t require ~/.aws/credentials
+  - id: detect-aws-credentials
+    args: [ "--allow-missing-credentials" ]
   - id: detect-private-key
   - id: check-added-large-files
   - id: check-yaml
   - id: end-of-file-fixer
   - id: trailing-whitespace
 
-# Strong secret scanning
+# Strong secret scanner
 - repo: https://github.com/gitleaks/gitleaks
   rev: v8.18.4
   hooks:
   - id: gitleaks
-    args: [ "--no-banner", "protect", "--staged" ]
+    args: [ "protect", "--staged", "--no-banner" ]
 
-# Optional: high-signal detector with a tunable baseline
+# Optional: baseline-driven detector (lets you accept existing noise)
 - repo: https://github.com/Yelp/detect-secrets
   rev: v1.5.0
   hooks:
