@@ -46,5 +46,3 @@ jobs:
           git checkout main
           cd test
           bash merge_repos.sh
-          
-          
